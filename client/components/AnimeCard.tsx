@@ -1,17 +1,33 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Film, Tv, Gem, Shield, Building2, Tags, Gauge } from "lucide-react";
 import type { Anime } from "@/lib/animeData";
 import { cn } from "@/lib/utils";
+import { getDominantColor, rgbToCssRgb } from "@/lib/color";
 
 export function AnimeCard({ anime, className }: { anime: Anime; className?: string }) {
   const [open, setOpen] = useState(false);
+  const [accentRgb, setAccentRgb] = useState<string | null>(null);
   const percentWatched = useMemo(
     () => Math.min(100, Math.round((anime.episodioAtual / Math.max(1, anime.episodes)) * 100)),
     [anime.episodioAtual, anime.episodes],
   );
+
+  useEffect(() => {
+    let mounted = true;
+    getDominantColor(anime.image)
+      .then((rgb) => {
+        if (mounted) setAccentRgb(rgbToCssRgb(rgb));
+      })
+      .catch(() => {});
+    return () => {
+      mounted = false;
+    };
+  }, [anime.image]);
+
+  const cssVar = accentRgb ? ({ ["--card-accent-rgb" as any]: accentRgb } as React.CSSProperties) : undefined;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -33,9 +49,10 @@ export function AnimeCard({ anime, className }: { anime: Anime; className?: stri
 
       <AnimatePresence>
         {open && (
-          <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={cssVar}>
             <motion.div
-              className="absolute inset-0 bg-[radial-gradient(600px_circle_at_center,rgba(229,57,53,0.35),transparent_70%)]"
+              className="absolute inset-0"
+              style={{ background: "radial-gradient(600px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.35, transparent 70%)" }}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 3, opacity: 1 }}
               exit={{ scale: 0.5, opacity: 0 }}
@@ -54,10 +71,10 @@ export function AnimeCard({ anime, className }: { anime: Anime; className?: stri
         )}
       </AnimatePresence>
 
-      <DialogContent className="z-[61] w-full max-w-4xl overflow-hidden rounded-xl border border-border bg-card/95 p-0 backdrop-blur-md">
+      <DialogContent className="z-[61] w-full max-w-4xl overflow-hidden rounded-xl border border-border bg-card/95 p-0 backdrop-blur-md" style={cssVar}>
         <div className="grid max-h-[85vh] grid-cols-1 gap-0 md:grid-cols-[300px,1fr]">
           <div className="relative h-72 w-full md:h-full">
-            <img src={anime.image} alt={`Capa de ${anime.title}`} className="h-full w-full object-cover" />
+            <img src={anime.image} alt={`Capa de ${anime.title}`} className="h-full w-full object-cover" crossOrigin="anonymous" />
             <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/50 px-2 py-1 text-xs font-semibold backdrop-blur">
               <Star className="h-3.5 w-3.5 text-yellow-400 fill-yellow-400" />
               <span>{anime.avaliacao.toFixed(1)}</span>
@@ -77,7 +94,7 @@ export function AnimeCard({ anime, className }: { anime: Anime; className?: stri
             </div>
 
             <div className="relative overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b from-background/60 to-background/30 p-4">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(to right, transparent, rgb(var(--card-accent-rgb, 229 57 53)) / 0.6, transparent)" }} />
               <div className="grid gap-4 md:grid-cols-2">
                 <InfoChip icon={<Shield className="h-3.5 w-3.5" />} label="Classificação" value={anime.classificacao} />
                 <InfoChip icon={<Building2 className="h-3.5 w-3.5" />} label="Estúdio" value={anime.estudio} />
@@ -90,15 +107,19 @@ export function AnimeCard({ anime, className }: { anime: Anime; className?: stri
                 </div>
                 <div className="h-2 w-full rounded-full bg-secondary/60">
                   <div
-                    className="h-2 rounded-full bg-accent shadow-[0_0_15px_rgba(229,57,53,0.6)]"
-                    style={{ width: `${percentWatched}%` }}
+                    className="h-2 rounded-full"
+                    style={{
+                      width: `${percentWatched}%`,
+                      background: "rgb(var(--card-accent-rgb, 229 57 53))",
+                      boxShadow: "0 0 15px rgb(var(--card-accent-rgb, 229 57 53) / 0.6)",
+                    }}
                   />
                 </div>
               </div>
 
               <div className="mt-4 grid gap-3 md:grid-cols-4">
                 <StatGlow icon={<Film className="h-4 w-4" />} label="Episódios" value={String(anime.episodes)} />
-                <StatGlow icon={<Tv className="h-4 w-4" />} label="Assistido até" value={`Ep. ${anime.episodioAtual}`} />
+                <StatGlow icon={<Tv className="h-4 w-4" />} label="Último Ep." value={`Ep. ${anime.episodioAtual}`} />
                 <StatGlow icon={<Gem className="h-4 w-4" />} label="Patrocinados" value={`${anime.episodiosPatrocinados}`} />
                 <StatGlow icon={<Building2 className="h-4 w-4" />} label="Estúdio" value={anime.estudio} />
               </div>
@@ -133,7 +154,7 @@ function InfoChip({ icon, label, value }: { icon: React.ReactNode; label: string
 function StatGlow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="relative rounded-lg p-[1px]">
-      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-60" />
+      <div className="absolute inset-0 rounded-lg opacity-60" style={{ background: "linear-gradient(to right, transparent, rgb(var(--card-accent-rgb, 229 57 53)) / 0.4, transparent)" }} />
       <div className="relative rounded-lg border border-border/60 bg-card/50 p-3">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">{icon}<span>{label}</span></div>
         <div className="mt-1 text-sm font-semibold">{value}</div>
