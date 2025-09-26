@@ -49,7 +49,7 @@ export function AnimeCard({ anime, className, variant = "mangekyo" }: { anime: A
           )}
           whileTap={{ scale: 0.97 }}
           animate={open ? { scale: 0.92, rotate: 2 } : { scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 180, damping: 15 }}
+          transition={{ type: "spring", stiffness: 100, damping: 18, mass: 1.2 }}
           style={cssVar}
         >
           <img src={anime.image} alt={anime.title} className="h-full w-full object-cover" loading="lazy" crossOrigin="anonymous" />
@@ -169,32 +169,32 @@ function OverlayEffect({ variant, cssVar }: { variant: OverlayVariant; cssVar?: 
   if (variant === "katana") {
     return (
       <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={cssVar}>
-        <motion.div className="absolute inset-0" style={{ background: "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.25, transparent 70%)" }} initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1.8, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ type: "spring", stiffness: 120, damping: 18 }} />
-        <Slash angle={-25} delay={0} />
-        <Slash angle={-25} delay={0.08} offset={40} />
+        <motion.div className="absolute inset-0" style={{ background: "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.25, transparent 70%)" }} initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1.8, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ duration: 1.1, ease: "easeOut" }} />
+        <Slash angle={-25} delay={0} dur={0.6} />
+        <Slash angle={-25} delay={0.12} offset={40} dur={0.65} />
       </motion.div>
     );
   }
   if (variant === "genjutsu") {
     return (
       <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={cssVar}>
-        <motion.div className="absolute inset-0" style={{ background: "radial-gradient(700px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.3, transparent 70%)" }} initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 2.2 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.5 }} />
-        <motion.div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ boxShadow: "0 0 60px 20px rgb(var(--card-accent-rgb, 229 57 53) / 0.5) inset" }} initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 0.8, scale: 1.2 }} exit={{ opacity: 0, scale: 0.4 }} transition={{ type: "spring", stiffness: 180, damping: 16 }} />
-        <motion.div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rotate-12" style={{ filter: "blur(2px)", boxShadow: "0 0 80px 10px rgb(var(--card-accent-rgb, 229 57 53) / 0.55)" }} initial={{ opacity: 0.7, scale: 0.3 }} animate={{ opacity: 0, scale: 6 }} exit={{ opacity: 0, scale: 0.3 }} transition={{ duration: 0.9 }} />
+        <motion.div className="absolute inset-0" style={{ background: "radial-gradient(700px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.3, transparent 70%)" }} initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 2.2 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 1.3 }} />
+        <motion.div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ boxShadow: "0 0 60px 20px rgb(var(--card-accent-rgb, 229 57 53) / 0.5) inset" }} initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 0.8, scale: 1.2 }} exit={{ opacity: 0, scale: 0.4 }} transition={{ duration: 1.0, ease: "easeOut" }} />
+        <motion.div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rotate-12" style={{ filter: "blur(2px)", boxShadow: "0 0 80px 10px rgb(var(--card-accent-rgb, 229 57 53) / 0.55)" }} initial={{ opacity: 0.7, scale: 0.3 }} animate={{ opacity: 0, scale: 6 }} exit={{ opacity: 0, scale: 0.3 }} transition={{ duration: 1.8 }} />
       </motion.div>
     );
   }
   return (
     <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={cssVar}>
-      <motion.div className="absolute inset-0" style={{ background: "radial-gradient(600px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.35, transparent 70%)" }} initial={{ scale: 0, opacity: 0 }} animate={{ scale: 3, opacity: 1 }} exit={{ scale: 0.5, opacity: 0 }} transition={{ type: "spring", stiffness: 120, damping: 20 }} />
-      <motion.img src="https://r2.flowith.net/files/o/1758479295415-itachi_uchiha_mangekyou_sharingan_index_0@1024x1024.png" alt="Mangekyou Sharingan" className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 opacity-0" initial={{ rotate: 0, opacity: 0, scale: 0.5 }} animate={{ rotate: -720, opacity: 0.25, scale: 1 }} exit={{ opacity: 0, scale: 0.3 }} transition={{ duration: 0.9, ease: [0.68, -0.55, 0.27, 1.55] }} />
-      <motion.div className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border" style={{ borderColor: "rgb(var(--card-accent-rgb, 229 57 53))" }} initial={{ opacity: 0, scale: 0.2 }} animate={{ opacity: 0.6, scale: 10 }} exit={{ opacity: 0, scale: 0.2 }} transition={{ duration: 0.6, ease: "easeOut" }} />
-      <motion.div className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border" style={{ borderColor: "rgb(var(--card-accent-rgb, 229 57 53))" }} initial={{ opacity: 0.7, scale: 0.2 }} animate={{ opacity: 0, scale: 16 }} exit={{ opacity: 0, scale: 0.2 }} transition={{ duration: 0.9, ease: "easeOut" }} />
+      <motion.div className="absolute inset-0" style={{ background: "radial-gradient(600px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.35, transparent 70%)" }} initial={{ scale: 0, opacity: 0 }} animate={{ scale: 3, opacity: 1 }} exit={{ scale: 0.5, opacity: 0 }} transition={{ duration: 1.2, ease: "easeOut" }} />
+      <motion.img src="https://r2.flowith.net/files/o/1758479295415-itachi_uchiha_mangekyou_sharingan_index_0@1024x1024.png" alt="Mangekyou Sharingan" className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 opacity-0" initial={{ rotate: 0, opacity: 0, scale: 0.5 }} animate={{ rotate: -720, opacity: 0.25, scale: 1 }} exit={{ opacity: 0, scale: 0.3 }} transition={{ duration: 1.6, ease: [0.68, -0.55, 0.27, 1.55] }} />
+      <motion.div className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border" style={{ borderColor: "rgb(var(--card-accent-rgb, 229 57 53))" }} initial={{ opacity: 0, scale: 0.2 }} animate={{ opacity: 0.6, scale: 10 }} exit={{ opacity: 0, scale: 0.2 }} transition={{ duration: 1.0, ease: "easeOut" }} />
+      <motion.div className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border" style={{ borderColor: "rgb(var(--card-accent-rgb, 229 57 53))" }} initial={{ opacity: 0.7, scale: 0.2 }} animate={{ opacity: 0, scale: 16 }} exit={{ opacity: 0, scale: 0.2 }} transition={{ duration: 1.4, ease: "easeOut" }} />
     </motion.div>
   );
 }
 
-function Slash({ angle, delay = 0, offset = 0 }: { angle: number; delay?: number; offset?: number }) {
+function Slash({ angle, delay = 0, offset = 0, dur = 0.55 }: { angle: number; delay?: number; offset?: number; dur?: number }) {
   return (
     <>
       <motion.div
@@ -203,7 +203,7 @@ function Slash({ angle, delay = 0, offset = 0 }: { angle: number; delay?: number
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
         exit={{ scaleX: 0, opacity: 0 }}
-        transition={{ delay, duration: 0.25, ease: "easeOut" }}
+        transition={{ delay, duration: dur, ease: "easeOut" }}
       />
       <motion.div
         className="absolute left-0 top-1/2 h-[2px] w-full origin-left bg-[rgb(var(--card-accent-rgb,229_57_53))] shadow-[0_0_30px_rgb(229,57,53,0.8)]"
@@ -211,7 +211,7 @@ function Slash({ angle, delay = 0, offset = 0 }: { angle: number; delay?: number
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
         exit={{ scaleX: 0, opacity: 0 }}
-        transition={{ delay: delay + 0.05, duration: 0.25, ease: "easeOut" }}
+        transition={{ delay: delay + 0.05, duration: dur, ease: "easeOut" }}
       />
     </>
   );
