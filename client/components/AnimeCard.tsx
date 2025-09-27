@@ -88,7 +88,7 @@ export function AnimeCard({ anime, className, variant = "mangekyo", showVariantL
 
             <div className="flex flex-wrap items-center gap-2">
               {anime.genero.map((g) => (
-                <Badge key={g} variant="outline" className="text-foreground" style={{ borderColor: "rgb(var(--card-accent-rgb,229 57 53))", background: "rgb(var(--card-accent-rgb,229 57 53)) / 0.12" as any, color: "rgb(var(--card-accent-rgb,229 57 53))" }}>
+                <Badge key={g} variant="outline" className="text-foreground" style={{ borderColor: "rgb(var(--card-accent-rgb,229 57 53))", backgroundColor: "rgb(var(--card-accent-rgb,229 57 53) / 0.12)", color: "rgb(var(--card-accent-rgb,229 57 53))" }}>
                   <Tags className="mr-1 h-3.5 w-3.5" /> {g}
                 </Badge>
               ))}
@@ -106,13 +106,13 @@ export function AnimeCard({ anime, className, variant = "mangekyo", showVariantL
                   <span className="inline-flex items-center gap-1"><Gauge className="h-3.5 w-3.5" /> Progresso</span>
                   <span className="font-semibold text-yellow-100">{anime.episodioAtual}/{anime.episodes} • {percentWatched}%</span>
                 </div>
-                <div className="h-2 w-full rounded-full bg-[#2a2219]">
+                <div className="h-2 w-full rounded-full" style={{ backgroundColor: "rgb(var(--card-accent-rgb,229 57 53) / 0.2)" }}>
                   <div
                     className="h-2 rounded-full"
                     style={{
                       width: `${percentWatched}%`,
-                      background: "linear-gradient(90deg, #ffd780, rgb(var(--card-accent-rgb,229 57 53)))",
-                      boxShadow: "0 0 18px rgba(255,215,128,0.5), 0 0 24px rgb(var(--card-accent-rgb,229 57 53) / 0.5)",
+                      background: "rgb(var(--card-accent-rgb,229 57 53))",
+                      boxShadow: "0 0 18px rgb(var(--card-accent-rgb,229 57 53) / 0.5)",
                     }}
                   />
                 </div>
@@ -158,7 +158,7 @@ function AgeBadge({ value }: { value: string }) {
 function InfoChip({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="relative rounded-lg p-[1px]">
-      <div className="absolute inset-0 rounded-lg opacity-80 blur-[2px]" style={{ background: "linear-gradient(90deg, rgb(var(--card-accent-rgb,229 57 53)) / 0.35, rgb(var(--card-accent-rgb,229 57 53)) / 0.08, transparent)" }} />
+      <div className="absolute inset-0 rounded-lg opacity-80 blur-[2px]" style={{ backgroundColor: "rgb(var(--card-accent-rgb,229 57 53))" }} />
       <div className="relative flex items-center justify-between gap-3 rounded-lg bg-[#19120c]/70 px-3 py-2" style={{ border: "1px solid rgb(var(--card-accent-rgb,229 57 53) / 0.35)" }}>
         <div className="inline-flex items-center gap-2 text-xs text-yellow-200/80">
           {icon}
@@ -258,7 +258,7 @@ function Slash({ angle, delay = 0, offset = 0, dur = 0.55 }: { angle: number; de
 function StatGlow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="relative rounded-lg p-[1px]">
-      <div className="absolute inset-0 rounded-lg opacity-60" style={{ background: "linear-gradient(to right, transparent, rgb(var(--card-accent-rgb,229 57 53)) / 0.45, transparent)" }} />
+      <div className="absolute inset-0 rounded-lg opacity-10" style={{ backgroundColor: "rgb(var(--card-accent-rgb,229 57 53))" }} />
       <div className="relative rounded-lg bg-[#19120c]/60 p-3" style={{ border: "1px solid rgb(var(--card-accent-rgb,229 57 53) / 0.35)" }}>
         <div className="flex items-center gap-2 text-xs text-yellow-200/80">{icon}<span>{label}</span></div>
         <div className="mt-1 text-sm font-semibold">{value}</div>
