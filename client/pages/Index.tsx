@@ -27,14 +27,15 @@ export default function Index() {
               </a>
             </div>
             <div className="no-scrollbar -mx-2 flex snap-x snap-mandatory gap-4 overflow-x-auto px-2 pb-2">
-              {section.items.map((anime) => (
-                <div key={anime.id} className="snap-start">
-                  <AnimeCard
-                    anime={anime}
-                    variant={section.id === "patrocinados" ? "mangekyo" : section.id === "sugestoes" ? "katana" : "genjutsu"}
-                  />
-                </div>
-              ))}
+              {section.items.map((anime, idx) => {
+                const katanaVariants = ["katana", "katanaX", "katanaVertical", "katanaArc"] as const;
+                const v = section.id === "patrocinados" ? katanaVariants[idx % katanaVariants.length] : section.id === "sugestoes" ? "katana" : "genjutsu";
+                return (
+                  <div key={anime.id} className="snap-start">
+                    <AnimeCard anime={anime} variant={v} />
+                  </div>
+                );
+              })}
             </div>
           </section>
         ))}
