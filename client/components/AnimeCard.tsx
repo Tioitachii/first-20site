@@ -76,7 +76,7 @@ export function AnimeCard({ anime, className, variant = "mangekyo", showVariantL
         <div className="grid max-h-[85vh] grid-cols-1 gap-0 md:grid-cols-[300px,1fr]">
           <div className="relative h-72 w-full md:h-full">
             <img src={anime.image} alt={`Capa de ${anime.title}`} className="h-full w-full object-cover" crossOrigin="anonymous" />
-            <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/50 px-2 py-1 text-xs font-semibold backdrop-blur">
+            <div className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-yellow-400/30 bg-black/50 px-2 py-1 text-xs font-semibold text-yellow-200 backdrop-blur">
               <Star className="h-3.5 w-3.5 text-yellow-400 fill-yellow-400" />
               <span>{anime.avaliacao.toFixed(1)}</span>
             </div>
@@ -84,35 +84,35 @@ export function AnimeCard({ anime, className, variant = "mangekyo", showVariantL
           </div>
 
           <motion.div className="space-y-5 p-6" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 120, damping: 18 }}>
-            <h3 className="text-2xl font-extrabold tracking-tight">{anime.title}</h3>
+            <h3 className="font-cinzel text-2xl font-extrabold tracking-wide text-yellow-100">{anime.title}</h3>
 
             <div className="flex flex-wrap items-center gap-2">
               {anime.genero.map((g) => (
-                <Badge key={g} variant="outline" className="border-border/60 bg-background/60 text-foreground/90">
+                <Badge key={g} variant="outline" className="border-yellow-500/30 bg-yellow-500/10 text-yellow-100">
                   <Tags className="mr-1 h-3.5 w-3.5" /> {g}
                 </Badge>
               ))}
               <AgeBadge value={anime.classificacao} />
             </div>
 
-            <div className="relative overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b from-background/60 to-background/30 p-4">
+            <div className="relative overflow-hidden rounded-xl border border-yellow-600/20 bg-gradient-to-b from-[#17120d]/80 to-[#0c0906]/80 p-4">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: "linear-gradient(to right, transparent, rgb(var(--card-accent-rgb, 229 57 53)) / 0.6, transparent)" }} />
               <div className="grid gap-4 md:grid-cols-1">
                 <InfoChip icon={<Building2 className="h-3.5 w-3.5" />} label="Estúdio" value={anime.estudio} />
               </div>
 
               <div className="mt-4 grid gap-2">
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <div className="flex items-center justify-between text-xs text-yellow-200/70">
                   <span className="inline-flex items-center gap-1"><Gauge className="h-3.5 w-3.5" /> Progresso</span>
-                  <span className="font-semibold text-foreground/90">{anime.episodioAtual}/{anime.episodes} • {percentWatched}%</span>
+                  <span className="font-semibold text-yellow-100">{anime.episodioAtual}/{anime.episodes} • {percentWatched}%</span>
                 </div>
-                <div className="h-2 w-full rounded-full bg-secondary/60">
+                <div className="h-2 w-full rounded-full bg-[#2a2219]">
                   <div
                     className="h-2 rounded-full"
                     style={{
                       width: `${percentWatched}%`,
-                      background: "rgb(var(--card-accent-rgb, 229 57 53))",
-                      boxShadow: "0 0 15px rgb(var(--card-accent-rgb, 229 57 53) / 0.6)",
+                      background: "linear-gradient(90deg, #ffd780, rgb(var(--card-accent-rgb,229 57 53)))",
+                      boxShadow: "0 0 18px rgba(255,215,128,0.5), 0 0 24px rgb(var(--card-accent-rgb,229 57 53) / 0.5)",
                     }}
                   />
                 </div>
@@ -127,8 +127,8 @@ export function AnimeCard({ anime, className, variant = "mangekyo", showVariantL
             </div>
 
             <div>
-              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Sinopse</h4>
-              <p className="text-sm leading-relaxed text-muted-foreground">{anime.synopsis}</p>
+              <h4 className="mb-2 font-cinzel text-xs font-semibold uppercase tracking-[0.2em] text-yellow-200/70">Sinopse</h4>
+              <p className="text-sm leading-relaxed text-yellow-100/90">{anime.synopsis}</p>
             </div>
           </motion.div>
         </div>
@@ -158,13 +158,13 @@ function AgeBadge({ value }: { value: string }) {
 function InfoChip({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="relative rounded-lg p-[1px]">
-      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent/40 via-accent/10 to-transparent opacity-80 blur-[2px]" />
-      <div className="relative flex items-center justify-between gap-3 rounded-lg border border-border/60 bg-card/60 px-3 py-2">
-        <div className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-yellow-500/30 via-yellow-500/10 to-transparent opacity-80 blur-[2px]" />
+      <div className="relative flex items-center justify-between gap-3 rounded-lg border border-yellow-600/30 bg-[#19120c]/70 px-3 py-2">
+        <div className="inline-flex items-center gap-2 text-xs text-yellow-200/80">
           {icon}
           <span className="uppercase tracking-wider">{label}</span>
         </div>
-        <div className="text-sm font-semibold">{value}</div>
+        <div className="text-sm font-semibold text-yellow-100">{value}</div>
       </div>
     </div>
   );
@@ -236,7 +236,7 @@ function Slash({ angle, delay = 0, offset = 0, dur = 0.55 }: { angle: number; de
   return (
     <>
       <motion.div
-        className="absolute left-0 top-1/2 h-[2px] w-full origin-left bg-white/80 shadow-[0_0_20px_rgba(255,255,255,0.6)]"
+        className="absolute left-0 top-1/2 h-[2px] w-full origin-left bg-white/90 shadow-[0_0_24px_rgba(255,255,255,0.85)]"
         style={{ transform: `translateY(${offset}px) rotate(${angle}deg)` }}
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
@@ -244,7 +244,7 @@ function Slash({ angle, delay = 0, offset = 0, dur = 0.55 }: { angle: number; de
         transition={{ delay, duration: dur, ease: "easeOut" }}
       />
       <motion.div
-        className="absolute left-0 top-1/2 h-[2px] w-full origin-left bg-[rgb(var(--card-accent-rgb,229_57_53))] shadow-[0_0_30px_rgb(229,57,53,0.8)]"
+        className="absolute left-0 top-1/2 h-[3px] w-full origin-left bg-[rgb(var(--card-accent-rgb,229_57_53))] shadow-[0_0_40px_rgb(229,57,53,0.95)]"
         style={{ transform: `translateY(${offset + 6}px) rotate(${angle}deg)` }}
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
@@ -259,8 +259,8 @@ function StatGlow({ icon, label, value }: { icon: React.ReactNode; label: string
   return (
     <div className="relative rounded-lg p-[1px]">
       <div className="absolute inset-0 rounded-lg opacity-60" style={{ background: "linear-gradient(to right, transparent, rgb(var(--card-accent-rgb, 229 57 53)) / 0.4, transparent)" }} />
-      <div className="relative rounded-lg border border-border/60 bg-card/50 p-3">
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">{icon}<span>{label}</span></div>
+      <div className="relative rounded-lg border border-yellow-600/30 bg-[#19120c]/60 p-3">
+        <div className="flex items-center gap-2 text-xs text-yellow-200/80">{icon}<span>{label}</span></div>
         <div className="mt-1 text-sm font-semibold">{value}</div>
       </div>
     </div>
