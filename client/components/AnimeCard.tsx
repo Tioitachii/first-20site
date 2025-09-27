@@ -9,7 +9,7 @@ import { getDominantColor, rgbToCssRgb } from "@/lib/color";
 
 type OverlayVariant = "mangekyo" | "katana" | "katanaX" | "katanaVertical" | "katanaArc" | "genjutsu";
 
-export function AnimeCard({ anime, className, variant = "mangekyo" }: { anime: Anime; className?: string; variant?: OverlayVariant }) {
+export function AnimeCard({ anime, className, variant = "mangekyo", showVariantLabel = false }: { anime: Anime; className?: string; variant?: OverlayVariant; showVariantLabel?: boolean }) {
   const [open, setOpen] = useState(false);
   const [accentRgb, setAccentRgb] = useState<string | null>(null);
   const percentWatched = useMemo(
@@ -57,6 +57,11 @@ export function AnimeCard({ anime, className, variant = "mangekyo" }: { anime: A
             <Star className="h-3.5 w-3.5 text-yellow-400 fill-yellow-400" />
             <span>{anime.avaliacao.toFixed(1)}</span>
           </div>
+          {showVariantLabel && (
+            <div className="absolute left-2 top-2 rounded-md border border-white/10 bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/80 backdrop-blur">
+              {variant}
+            </div>
+          )}
           {patrocinadosBadge}
         </motion.button>
       </DialogTrigger>
