@@ -7,7 +7,7 @@ import type { Anime } from "@/lib/animeData";
 import { cn } from "@/lib/utils";
 import { getDominantColor, rgbToCssRgb } from "@/lib/color";
 
-type OverlayVariant = "mangekyo" | "katana" | "genjutsu";
+type OverlayVariant = "mangekyo" | "katana" | "katanaX" | "katanaVertical" | "katanaArc" | "genjutsu";
 
 export function AnimeCard({ anime, className, variant = "mangekyo" }: { anime: Anime; className?: string; variant?: OverlayVariant }) {
   const [open, setOpen] = useState(false);
@@ -172,6 +172,39 @@ function OverlayEffect({ variant, cssVar }: { variant: OverlayVariant; cssVar?: 
         <motion.div className="absolute inset-0" style={{ background: "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.25, transparent 70%)" }} initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1.8, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ duration: 1.1, ease: "easeOut" }} />
         <Slash angle={-25} delay={0} dur={0.6} />
         <Slash angle={-25} delay={0.12} offset={40} dur={0.65} />
+      </motion.div>
+    );
+  }
+  if (variant === "katanaX") {
+    return (
+      <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={cssVar}>
+        <motion.div className="absolute inset-0" style={{ background: "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.22, transparent 70%)" }} initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1.9, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} transition={{ duration: 1.2 }} />
+        <Slash angle={-28} delay={0.05} dur={0.7} />
+        <Slash angle={28} delay={0.18} dur={0.75} />
+      </motion.div>
+    );
+  }
+  if (variant === "katanaVertical") {
+    return (
+      <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={cssVar}>
+        <motion.div className="absolute inset-0" style={{ background: "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.22, transparent 70%)" }} initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1.6, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} transition={{ duration: 1.0 }} />
+        <Slash angle={90} delay={0.05} dur={0.75} />
+        <Slash angle={90} delay={0.2} offset={18} dur={0.85} />
+      </motion.div>
+    );
+  }
+  if (variant === "katanaArc") {
+    return (
+      <motion.div className="pointer-events-none fixed inset-0 z-[60]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={cssVar}>
+        <motion.div className="absolute inset-0" style={{ background: "radial-gradient(700px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.2, transparent 70%)" }} initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1.8, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} transition={{ duration: 1.1 }} />
+        <motion.div
+          className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{ background: "conic-gradient(from 220deg, rgb(var(--card-accent-rgb,229_57_53)) 0deg, transparent 140deg)" }}
+          initial={{ rotate: -90, opacity: 0.6 }}
+          animate={{ rotate: 270, opacity: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        />
       </motion.div>
     );
   }
