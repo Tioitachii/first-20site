@@ -63,7 +63,6 @@ export function AnimeCard({
     ? ({ ["--card-accent-rgb" as any]: accentRgb } as React.CSSProperties)
     : undefined;
 
-
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -398,13 +397,13 @@ function OverlayEffect({
           exit={{ scaleY: 0 }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.05 }}
         />
-        {[ -20, -8, 0, 8, 20 ].map((y, i) => (
+        {[-20, -8, 0, 8, 20].map((y, i) => (
           <motion.div
             key={i}
             className="absolute left-1/2 top-1/2 h-0.5 w-8 rounded bg-white/80"
             style={{ transform: `translate(-50%, -50%) translateY(${y}px)` }}
             initial={{ opacity: 0.9, x: 0 }}
-            animate={{ opacity: 0, x: (i < 2 ? -320 : i > 2 ? 320 : 0) }}
+            animate={{ opacity: 0, x: i < 2 ? -320 : i > 2 ? 320 : 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.9, delay: 0.06 * i, ease: "easeOut" }}
           />
