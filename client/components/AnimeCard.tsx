@@ -62,13 +62,6 @@ export function AnimeCard({
     ? ({ ["--card-accent-rgb" as any]: accentRgb } as React.CSSProperties)
     : undefined;
 
-  const patrocinadosBadge =
-    anime.episodiosPatrocinados > 0 ? (
-      <div className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/50 px-2 py-1 text-[11px] font-semibold backdrop-blur">
-        <Gem className="h-3.5 w-3.5 text-cyan-300" />
-        <span>Patrocinados: {anime.episodiosPatrocinados}</span>
-      </div>
-    ) : null;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -97,18 +90,9 @@ export function AnimeCard({
             crossOrigin="anonymous"
           />
           <div className="absolute right-2 top-2 inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/50 px-2 py-1 text-xs font-semibold backdrop-blur">
-            <Star
-              className="h-3.5 w-3.5"
-              style={{ color: "rgb(var(--card-accent-rgb,229 57 53))" }}
-            />
+            <Star className="h-3.5 w-3.5 text-yellow-400" fill="currentColor" />
             <span>{anime.avaliacao.toFixed(1)}</span>
           </div>
-          {showVariantLabel && (
-            <div className="absolute left-2 top-2 rounded-md border border-white/10 bg-black/50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-foreground/80 backdrop-blur">
-              {variant}
-            </div>
-          )}
-          {patrocinadosBadge}
         </motion.button>
       </DialogTrigger>
 
