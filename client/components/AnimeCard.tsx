@@ -21,6 +21,7 @@ type OverlayVariant =
   | "katana"
   | "katanaX"
   | "katanaVertical"
+  | "katanaStorm"
   | "katanaArc"
   | "genjutsu";
 
@@ -374,15 +375,72 @@ function OverlayEffect({
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.22, transparent 70%)",
+              "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.18, transparent 70%)",
           }}
-          initial={{ scale: 0.6, opacity: 0 }}
-          animate={{ scale: 1.6, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.7, opacity: 0 }}
+          animate={{ scale: 1.8, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
           transition={{ duration: 1.0 }}
         />
-        <Slash angle={90} delay={0.05} dur={0.75} />
-        <Slash angle={90} delay={0.2} offset={18} dur={0.85} />
+        <motion.div
+          className="absolute top-0 h-full w-px bg-white/85 shadow-[0_0_24px_rgba(255,255,255,0.9)]"
+          style={{ left: "50%", transform: "translateX(-50%)" }}
+          initial={{ scaleY: 0, originY: 0 }}
+          animate={{ scaleY: 1 }}
+          exit={{ scaleY: 0 }}
+          transition={{ duration: 0.85, ease: "easeOut" }}
+        />
+        <motion.div
+          className="absolute top-0 h-full w-[3px] bg-[rgb(var(--card-accent-rgb,229_57_53))] shadow-[0_0_40px_rgb(229,57,53,0.95)]"
+          style={{ left: "50%", transform: "translateX(-50%)" }}
+          initial={{ scaleY: 0, originY: 0 }}
+          animate={{ scaleY: 1 }}
+          exit={{ scaleY: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.05 }}
+        />
+        {[ -20, -8, 0, 8, 20 ].map((y, i) => (
+          <motion.div
+            key={i}
+            className="absolute left-1/2 top-1/2 h-0.5 w-8 rounded bg-white/80"
+            style={{ transform: `translate(-50%, -50%) translateY(${y}px)` }}
+            initial={{ opacity: 0.9, x: 0 }}
+            animate={{ opacity: 0, x: (i < 2 ? -320 : i > 2 ? 320 : 0) }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9, delay: 0.06 * i, ease: "easeOut" }}
+          />
+        ))}
+      </motion.div>
+    );
+  }
+  if (variant === "katanaStorm") {
+    return (
+      <motion.div
+        className="pointer-events-none fixed inset-0 z-[60]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        style={cssVar}
+      >
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(800px circle at center, rgb(var(--card-accent-rgb, 229 57 53)) / 0.2, transparent 70%)",
+          }}
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: 1, scale: 1.7 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 1.0 }}
+        />
+        {[
+          { a: -65, o: -60, d: 0.6, t: 0.0 },
+          { a: -30, o: -20, d: 0.6, t: 0.08 },
+          { a: 0, o: 0, d: 0.55, t: 0.12 },
+          { a: 30, o: 20, d: 0.6, t: 0.18 },
+          { a: 65, o: 60, d: 0.65, t: 0.24 },
+        ].map((s, i) => (
+          <Slash key={i} angle={s.a} offset={s.o} dur={s.d} delay={s.t} />
+        ))}
       </motion.div>
     );
   }

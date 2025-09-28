@@ -47,6 +47,7 @@ export default function Index() {
                   "katana",
                   "katanaX",
                   "katanaVertical",
+                  "katanaStorm",
                   "katanaArc",
                 ] as const;
                 const v =
