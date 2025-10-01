@@ -222,7 +222,7 @@ export function AnimeCard({
                   value={`Ep. ${anime.episodioAtual}`}
                 />
                 <StatGlow
-                  icon={<Medal className="h-6 w-6 shrink-0 text-amber-300" strokeWidth={1.6} />}
+                  icon={<Medal className="h-4 w-4 text-amber-300" strokeWidth={1.5} />}
                   label="Patrocinados"
                   value={`${anime.episodiosPatrocinados}`}
                 />
