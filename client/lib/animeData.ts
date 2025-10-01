@@ -53,8 +53,7 @@ export const animeData: AnimeCollections = {
     {
       id: 101,
       title: "Frieren",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMjVjZGU5ZTctYjA0Mi00ZjY2LTg5YjktYzE4YjJmY2Q0NTMwXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+      image: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
       episodes: 28,
       synopsis:
         "Após a derrota do Rei Demônio, a maga elfa Frieren reflete sobre o tempo e o significado das relações efêmeras com humanos.",
@@ -67,41 +66,38 @@ export const animeData: AnimeCollections = {
     },
     {
       id: 102,
-      title: "Solo Leveling",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BYjI5ZTEwYjktM2ZjNC00Y2Y0LWFlZDgtOGFmNDU3YjM1OTQyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX1000_.jpg",
-      episodes: 12,
+      title: "Neon Genesis Evangelion",
+      image: "https://cdn.myanimelist.net/images/anime/1314/108941.jpg",
+      episodes: 26,
       synopsis:
-        "Em um mundo de portais, Sung Jinwoo ganha habilidades extraordinárias e inicia sua ascensão ao topo.",
-      avaliacao: 4.7,
-      episodioAtual: 12,
-      episodiosPatrocinados: 3,
-      genero: ["Ação", "Fantasia", "Sobrenatural"],
-      classificacao: "14",
-      estudio: "A-1 Pictures",
+        "Adolescentes pilotam bio-robôs gigantes para enfrentar anjos misteriosos enquanto lidam com traumas psicológicos e segredos do projeto NERV.",
+      avaliacao: 4.9,
+      episodioAtual: 26,
+      episodiosPatrocinados: 5,
+      genero: ["Psicológico", "Mecha", "Drama"],
+      classificacao: "16",
+      estudio: "Gainax / Tatsunoko Production",
     },
     {
       id: 103,
-      title: "Mushoku Tensei",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMGRkOGQ4OGItMjAzYi00ZDEyLTgyYmEtYmJjMjA0MTZlOGI5XkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_.jpg",
-      episodes: 48,
+      title: "Fullmetal Alchemist: Brotherhood",
+      image: "https://cdn.myanimelist.net/images/anime/1223/96541.jpg",
+      episodes: 64,
       synopsis:
-        "Um recluso reencarna como Rudeus Greyrat em um mundo de fantasia e decide viver ao máximo como um mago poderoso.",
-      avaliacao: 4.6,
-      episodioAtual: 30,
-      episodiosPatrocinados: 7,
-      genero: ["Fantasia", "Aventura", "Drama"],
-      classificacao: "16",
-      estudio: "Studio Bind",
+        "Os irmãos Elric viajam em busca da Pedra Filosofal para restaurar seus corpos após uma transmutação proibida, enfrentando conspirações militares e homúnculos.",
+      avaliacao: 5.0,
+      episodioAtual: 64,
+      episodiosPatrocinados: 10,
+      genero: ["Ação", "Aventura", "Fantasia"],
+      classificacao: "14",
+      estudio: "Bones",
     },
   ],
   finalizados: [
     {
       id: 201,
       title: "Jujutsu Kaisen",
-      image:
-        "https://cdn.myanimelist.net/images/anime/1607/136734.jpg",
+      image: "https://cdn.myanimelist.net/images/anime/1171/109222.jpg",
       episodes: 47,
       synopsis:
         "Yuji Itadori envolve-se com uma sociedade de Feiticeiros para eliminar maldições e torna-se hospedeiro de Sukuna.",
