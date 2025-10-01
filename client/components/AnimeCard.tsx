@@ -119,10 +119,7 @@ export function AnimeCard({
                 color: "rgb(var(--card-accent-rgb,229 57 53))",
               }}
             >
-              <Star
-                className="h-3.5 w-3.5"
-                style={{ color: "rgb(var(--card-accent-rgb,229 57 53))" }}
-              />
+              <Star className="h-3.5 w-3.5 text-yellow-400" fill="currentColor" />
               <span>{anime.avaliacao.toFixed(1)}</span>
             </div>
             <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/60 to-transparent" />
