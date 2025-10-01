@@ -11,7 +11,7 @@ import {
   Star,
   Film,
   Tv,
-  Crown,
+  Medal,
   Shield,
   Building2,
   Tags,
@@ -222,7 +222,7 @@ export function AnimeCard({
                   value={`Ep. ${anime.episodioAtual}`}
                 />
                 <StatGlow
-                  icon={<Crown className="h-6 w-6 text-amber-300" strokeWidth={1.4} />}
+                  icon={<Medal className="h-6 w-6 shrink-0 text-amber-300" strokeWidth={1.6} />}
                   label="Patrocinados"
                   value={`${anime.episodiosPatrocinados}`}
                 />
