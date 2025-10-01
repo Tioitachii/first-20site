@@ -21,7 +21,10 @@ import {
 import type { Anime } from "@/lib/animeData";
 import { cn } from "@/lib/utils";
 import { getDominantColor, rgbToCssRgb } from "@/lib/color";
-import { getGradientBackground, useGradientTheme } from "@/hooks/use-gradient-theme";
+import {
+  getGradientBackground,
+  useGradientTheme,
+} from "@/hooks/use-gradient-theme";
 
 type OverlayVariant =
   | "mangekyo"
@@ -131,7 +134,10 @@ export function AnimeCard({
                 color: "rgb(var(--card-accent-rgb,229 57 53))",
               }}
             >
-              <Star className="h-3.5 w-3.5 text-yellow-400" fill="currentColor" />
+              <Star
+                className="h-3.5 w-3.5 text-yellow-400"
+                fill="currentColor"
+              />
               <span>{anime.avaliacao.toFixed(1)}</span>
             </div>
             <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/60 to-transparent" />
@@ -231,7 +237,12 @@ export function AnimeCard({
                   value={`Ep. ${anime.episodioAtual}`}
                 />
                 <StatGlow
-                  icon={<Award className="h-4 w-4 text-amber-300" strokeWidth={1.6} />}
+                  icon={
+                    <Award
+                      className="h-4 w-4 text-amber-300"
+                      strokeWidth={1.6}
+                    />
+                  }
                   label="Patrocinados"
                   value={`${anime.episodiosPatrocinados}`}
                 />

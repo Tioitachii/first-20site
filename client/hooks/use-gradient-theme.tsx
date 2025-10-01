@@ -1,4 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 export type GradientPresetId = "auric" | "legacy" | "chromatic" | "luminous";
 
@@ -16,7 +23,9 @@ type GradientPresetMeta = {
 const STORAGE_KEY = "gradient-style:selected";
 const DEFAULT_PRESET: GradientPresetId = "auric";
 
-const GradientThemeContext = createContext<GradientThemeContextValue | undefined>(undefined);
+const GradientThemeContext = createContext<
+  GradientThemeContextValue | undefined
+>(undefined);
 
 export const gradientPresets: GradientPresetMeta[] = [
   {
@@ -41,13 +50,21 @@ export const gradientPresets: GradientPresetMeta[] = [
   },
 ];
 
-export function GradientThemeProvider({ children }: { children: React.ReactNode }) {
+export function GradientThemeProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [preset, setPresetState] = useState<GradientPresetId>(() => {
     if (typeof window === "undefined") {
       return DEFAULT_PRESET;
     }
-    const stored = window.localStorage.getItem(STORAGE_KEY) as GradientPresetId | null;
-    return stored && gradientPresets.some(({ id }) => id === stored) ? stored : DEFAULT_PRESET;
+    const stored = window.localStorage.getItem(
+      STORAGE_KEY,
+    ) as GradientPresetId | null;
+    return stored && gradientPresets.some(({ id }) => id === stored)
+      ? stored
+      : DEFAULT_PRESET;
   });
 
   useEffect(() => {
@@ -64,13 +81,19 @@ export function GradientThemeProvider({ children }: { children: React.ReactNode 
     [preset, setPreset],
   );
 
-  return <GradientThemeContext.Provider value={value}>{children}</GradientThemeContext.Provider>;
+  return (
+    <GradientThemeContext.Provider value={value}>
+      {children}
+    </GradientThemeContext.Provider>
+  );
 }
 
 export function useGradientTheme() {
   const ctx = useContext(GradientThemeContext);
   if (!ctx) {
-    throw new Error("useGradientTheme must be used within a GradientThemeProvider");
+    throw new Error(
+      "useGradientTheme must be used within a GradientThemeProvider",
+    );
   }
   return ctx;
 }
