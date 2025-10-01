@@ -227,9 +227,9 @@ export function AnimeCard({
                   value={`${anime.episodiosPatrocinados}`}
                 />
                 <StatGlow
-                  icon={<Building2 className="h-4 w-4" />}
-                  label="Estúdio"
-                  value={anime.estudio}
+                  icon={<Tags className="h-4 w-4" />}
+                  label="Gênero"
+                  value={anime.genero.join(", ")}
                 />
               </div>
             </div>
