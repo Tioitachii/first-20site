@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -131,9 +136,11 @@ export function AnimeCard({
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 120, damping: 18 }}
           >
-            <h3 className="font-cinzel text-2xl font-extrabold tracking-wide text-yellow-100">
-              {anime.title}
-            </h3>
+            <DialogTitle asChild>
+              <h3 className="font-cinzel text-2xl font-extrabold tracking-wide text-yellow-100">
+                {anime.title}
+              </h3>
+            </DialogTitle>
 
             <div className="flex flex-wrap items-center gap-2">
               {anime.genero.map((g) => (
