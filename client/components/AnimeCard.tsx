@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +21,7 @@ import {
 import type { Anime } from "@/lib/animeData";
 import { cn } from "@/lib/utils";
 import { getDominantColor, rgbToCssRgb } from "@/lib/color";
+import { getGradientBackground, useGradientTheme } from "@/hooks/use-gradient-theme";
 
 type OverlayVariant =
   | "mangekyo"
