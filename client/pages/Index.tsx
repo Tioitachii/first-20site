@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import Layout from "@/components/Layout";
 import { AnimeCard } from "@/components/AnimeCard";
 import { animeData } from "@/lib/animeData";
+import { Gem } from "lucide-react";
 
 export default function Index() {
   const sections = useMemo(
@@ -31,9 +32,18 @@ export default function Index() {
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="scroll-mt-24">
             <div className="mb-4 flex items-end justify-between">
-              <h2 className="border-l-4 border-accent pl-3 text-2xl font-bold tracking-tight">
-                {section.title}
-              </h2>
+              {section.id === "patrocinados" ? (
+                <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-accent/60 bg-accent/10">
+                    <Gem className="h-5 w-5 text-accent" />
+                  </span>
+                  {section.title}
+                </h2>
+              ) : (
+                <h2 className="border-l-4 border-accent pl-3 text-2xl font-bold tracking-tight">
+                  {section.title}
+                </h2>
+              )}
               <a
                 href={`/#${section.id}`}
                 className="text-sm text-accent hover:underline"
