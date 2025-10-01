@@ -214,7 +214,7 @@ export function AnimeCard({
                 />
                 <StatGlow
                   icon={<Tv className="h-4 w-4" />}
-                  label="Último Assistido"
+                  label="Assistido"
                   value={`Ep. ${anime.episodioAtual}`}
                 />
                 <StatGlow
