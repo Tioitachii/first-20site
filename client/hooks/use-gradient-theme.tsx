@@ -105,11 +105,11 @@ export function getGradientBackground(
   const accent = `rgb(${accentVar})`;
   switch (preset) {
     case "legacy":
-      return "linear-gradient(170deg, rgba(24, 18, 13, 0.92) 0%, rgba(11, 8, 6, 0.94) 100%)";
+      return `linear-gradient(150deg, rgba(253, 222, 158, 0.24) 0%, color-mix(in oklab, ${accent} 62%, black 38%) 56%, rgba(11, 8, 6, 0.94) 100%)`;
     case "chromatic":
-      return `linear-gradient(150deg, color-mix(in oklab, ${accent} 88%, white 12%) 0%, color-mix(in oklab, ${accent} 60%, black 40%) 65%, rgba(8, 6, 4, 0.93) 100%)`;
+      return `linear-gradient(150deg, color-mix(in oklab, ${accent} 86%, white 14%) 0%, color-mix(in oklab, ${accent} 58%, black 42%) 65%, rgba(8, 6, 4, 0.93) 100%)`;
     case "luminous":
-      return `linear-gradient(145deg, rgba(255, 244, 214, 0.38) 0%, color-mix(in oklab, ${accent} 78%, white 22%) 50%, rgba(12, 14, 20, 0.9) 100%)`;
+      return `linear-gradient(145deg, rgba(255, 248, 224, 0.42) 0%, color-mix(in oklab, ${accent} 74%, white 26%) 52%, rgba(13, 15, 24, 0.88) 100%)`;
     case "auric":
     default:
       return `linear-gradient(150deg, rgba(253, 236, 194, 0.36) 0%, color-mix(in oklab, ${accent} 82%, white 18%) 52%, rgba(12, 9, 6, 0.92) 100%)`;
