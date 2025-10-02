@@ -1,4 +1,4 @@
-import Layout, { Container } from "@/components/Layout";
+import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
