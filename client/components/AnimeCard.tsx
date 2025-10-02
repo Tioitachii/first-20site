@@ -177,8 +177,7 @@ export function AnimeCard({
               className="relative overflow-hidden rounded-xl border p-4"
               style={{
                 borderColor: "rgb(var(--card-accent-rgb,229 57 53) / 0.3)",
-                background:
-                  "linear-gradient(150deg, rgba(253, 230, 162, 0.26), rgb(var(--card-accent-rgb,229 57 53) / 0.32) 55%, rgba(12, 9, 6, 0.88))",
+                background: panelBackground,
               }}
             >
               <div
