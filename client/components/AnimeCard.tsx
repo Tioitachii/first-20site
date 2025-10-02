@@ -49,8 +49,12 @@ export function AnimeCard({
   const [accentRgb, setAccentRgb] = useState<string | null>(null);
   const { preset } = useGradientTheme();
   const panelBackground = useMemo(
-    () => getGradientBackground(preset, "var(--card-accent-rgb, 229 57 53)"),
-    [preset],
+    () =>
+      getGradientBackground(
+        preset,
+        accentRgb ?? "var(--card-accent-rgb, 229 57 53)",
+      ),
+    [preset, accentRgb],
   );
   const percentWatched = useMemo(
     () =>
