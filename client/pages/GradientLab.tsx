@@ -44,7 +44,7 @@ export default function GradientLab() {
 
   return (
     <Layout>
-      <Container className="py-8">
+      <div className="py-8">
         <div className="flex flex-col gap-6 pb-8">
           <div className="flex items-center gap-3 text-sm text-accent">
             <Paintbrush className="h-5 w-5" />
@@ -128,7 +128,7 @@ export default function GradientLab() {
             );
           })}
         </div>
-      </Container>
+      </div>
     </Layout>
   );
 }
