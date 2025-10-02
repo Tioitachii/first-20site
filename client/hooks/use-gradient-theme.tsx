@@ -21,7 +21,7 @@ type GradientPresetMeta = {
 };
 
 const STORAGE_KEY = "gradient-style:selected";
-const DEFAULT_PRESET: GradientPresetId = "auric";
+const DEFAULT_PRESET: GradientPresetId = "chromatic";
 
 const GradientThemeContext = createContext<
   GradientThemeContextValue | undefined
