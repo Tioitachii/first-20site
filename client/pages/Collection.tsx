@@ -3,10 +3,19 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import Layout, { Container } from "@/components/Layout";
 import { AnimeCard } from "@/components/AnimeCard";
 import { animeData, type AnimeCollections } from "@/lib/animeData";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 
-const metadata: Record<keyof AnimeCollections, { title: string; description: string }> = {
+const metadata: Record<
+  keyof AnimeCollections,
+  { title: string; description: string }
+> = {
   patrocinados: {
     title: "Todos os Patrocinados",
     description:
@@ -24,7 +33,13 @@ const metadata: Record<keyof AnimeCollections, { title: string; description: str
   },
 };
 
-const katanaVariants = ["katana", "katanaX", "katanaVertical", "katanaStorm", "katanaArc"] as const;
+const katanaVariants = [
+  "katana",
+  "katanaX",
+  "katanaVertical",
+  "katanaStorm",
+  "katanaArc",
+] as const;
 
 type CollectionKey = keyof AnimeCollections;
 
@@ -65,12 +80,19 @@ export default function CollectionPage() {
             </BreadcrumbList>
           </Breadcrumb>
           <div className="flex flex-col gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">{info.title}</h1>
-            <p className="max-w-2xl text-sm text-muted-foreground">{info.description}</p>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">
+              {info.title}
+            </h1>
+            <p className="max-w-2xl text-sm text-muted-foreground">
+              {info.description}
+            </p>
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <span>{items.length} títulos encontrados</span>
               <span>•</span>
-              <Link className="text-accent hover:underline" to={`/#${collection}`}>
+              <Link
+                className="text-accent hover:underline"
+                to={`/#${collection}`}
+              >
                 Ver destaque na página inicial
               </Link>
             </div>
@@ -82,10 +104,18 @@ export default function CollectionPage() {
             const variant =
               key === "finalizados"
                 ? "genjutsu"
-                : katanaVariants[(index + (key === "sugestoes" ? 1 : 0)) % katanaVariants.length];
+                : katanaVariants[
+                    (index + (key === "sugestoes" ? 1 : 0)) %
+                      katanaVariants.length
+                  ];
             const showLabel = key !== "finalizados";
             return (
-              <AnimeCard key={anime.id} anime={anime} variant={variant} showVariantLabel={showLabel} />
+              <AnimeCard
+                key={anime.id}
+                anime={anime}
+                variant={variant}
+                showVariantLabel={showLabel}
+              />
             );
           })}
         </div>

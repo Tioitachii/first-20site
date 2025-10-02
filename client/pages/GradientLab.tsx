@@ -16,7 +16,13 @@ const ACCENT_SAMPLES = [
   { name: "Esmeralda", rgb: "29 135 114" },
 ];
 
-function GradientPreview({ preset, accent }: { preset: GradientPresetId; accent: string }) {
+function GradientPreview({
+  preset,
+  accent,
+}: {
+  preset: GradientPresetId;
+  accent: string;
+}) {
   const background = getGradientBackground(preset, accent);
   return (
     <div
@@ -32,7 +38,8 @@ function GradientPreview({ preset, accent }: { preset: GradientPresetId; accent:
       <div className="mt-6 grid gap-2 text-white/90">
         <div className="text-sm font-semibold">Titulo do Anime</div>
         <p className="text-xs text-white/75">
-          Pré-visualização do gradiente aplicado com a cor dominante selecionada.
+          Pré-visualização do gradiente aplicado com a cor dominante
+          selecionada.
         </p>
       </div>
     </div>
@@ -51,16 +58,23 @@ export default function GradientLab() {
             <span>Laboratório de Degradês</span>
           </div>
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight">Escolha o brilho das cartas</h1>
+            <h1 className="text-3xl font-semibold tracking-tight">
+              Escolha o brilho das cartas
+            </h1>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-              Teste variações de degradê para o interior dos cards. Selecionamos opções que
-              equilibram o destaque dourado e combinações puras derivadas da cor predominante do pôster.
+              Teste variações de degradê para o interior dos cards. Selecionamos
+              opções que equilibram o destaque dourado e combinações puras
+              derivadas da cor predominante do pôster.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
             <span>Pré-visualizações com exemplos de cores dominantes:</span>
             {ACCENT_SAMPLES.map((sample) => (
-              <Badge key={sample.name} variant="outline" className="border-accent/30">
+              <Badge
+                key={sample.name}
+                variant="outline"
+                className="border-accent/30"
+              >
                 {sample.name}
               </Badge>
             ))}
@@ -87,7 +101,9 @@ export default function GradientLab() {
                     <h2 className="text-xl font-semibold text-foreground">
                       {meta.label}
                     </h2>
-                    <p className="text-sm text-muted-foreground">{meta.description}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {meta.description}
+                    </p>
                   </div>
                   {active ? (
                     <div className="flex items-center gap-1 rounded-full bg-accent/20 px-3 py-1 text-sm font-semibold text-accent">

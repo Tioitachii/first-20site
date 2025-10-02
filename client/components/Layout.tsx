@@ -2,9 +2,17 @@ import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
 import { Star } from "lucide-react";
 
-export function Container({ className, children }: PropsWithChildren<{ className?: string }>) {
+export function Container({
+  className,
+  children,
+}: PropsWithChildren<{ className?: string }>) {
   return (
-    <div className={cn("mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8", className)}>
+    <div
+      className={cn(
+        "mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -24,16 +32,28 @@ export default function Layout({ children }: PropsWithChildren) {
             <span className="text-lg">Tio Itachi</span>
           </a>
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-            <a href="#patrocinados" className="hover:text-accent-foreground/80 text-foreground/90">
+            <a
+              href="#patrocinados"
+              className="hover:text-accent-foreground/80 text-foreground/90"
+            >
               Patrocinados
             </a>
-            <a href="#sugestoes" className="hover:text-accent-foreground/80 text-foreground/90">
+            <a
+              href="#sugestoes"
+              className="hover:text-accent-foreground/80 text-foreground/90"
+            >
               Sugestões
             </a>
-            <a href="#finalizados" className="hover:text-accent-foreground/80 text-foreground/90">
+            <a
+              href="#finalizados"
+              className="hover:text-accent-foreground/80 text-foreground/90"
+            >
               Finalizados
             </a>
-            <a href="/gradientes" className="hover:text-accent-foreground/80 text-foreground/90">
+            <a
+              href="/gradientes"
+              className="hover:text-accent-foreground/80 text-foreground/90"
+            >
               Gradientes
             </a>
           </nav>
