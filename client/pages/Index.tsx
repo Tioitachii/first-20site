@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { AnimeCard } from "@/components/AnimeCard";
 import { animeData } from "@/lib/animeData";
-
-const PREVIEW_COUNT = 6;
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Index() {
   const sections = useMemo(
@@ -44,8 +49,9 @@ export default function Index() {
                 Ver todos →
               </Link>
             </div>
-            <div className="no-scrollbar -mx-2 flex snap-x snap-mandatory gap-4 overflow-x-auto px-2 pb-2">
-              {section.items.slice(0, PREVIEW_COUNT).map((anime, idx) => {
+            <Carousel className="group relative">
+              <CarouselContent className="-ml-4">
+                {section.items.map((anime, idx) => {
                 const katanaVariants = [
                   "katana",
                   "katanaX",
@@ -61,16 +67,22 @@ export default function Index() {
                       : "genjutsu";
                 const showLabel = section.id !== "finalizados";
                 return (
-                  <div key={anime.id} className="snap-start">
+                  <CarouselItem
+                    key={anime.id}
+                    className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  >
                     <AnimeCard
                       anime={anime}
                       variant={v}
                       showVariantLabel={showLabel}
                     />
-                  </div>
+                  </CarouselItem>
                 );
               })}
-            </div>
+              </CarouselContent>
+              <CarouselPrevious className="-left-10 hidden border-none bg-black/60 text-white shadow-md group-hover:flex md:flex" />
+              <CarouselNext className="-right-10 hidden border-none bg-black/60 text-white shadow-md group-hover:flex md:flex" />
+            </Carousel>
           </section>
         ))}
       </div>
