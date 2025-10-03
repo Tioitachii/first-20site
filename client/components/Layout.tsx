@@ -20,7 +20,7 @@ export function Container({
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#020207] text-white">
       <header className="sticky top-0 z-40 border-b border-border/60 bg-card/80 backdrop-blur-md">
         <Container className="flex h-16 items-center justify-between gap-4">
           <a href="/" className="flex items-center gap-2 font-semibold">
