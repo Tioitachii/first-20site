@@ -50,12 +50,6 @@ export default function Layout({ children }: PropsWithChildren) {
             >
               Finalizados
             </a>
-            <a
-              href="/gradientes"
-              className="hover:text-accent-foreground/80 text-foreground/90"
-            >
-              Gradientes
-            </a>
           </nav>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
