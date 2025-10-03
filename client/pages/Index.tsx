@@ -35,7 +35,7 @@ export default function Index() {
 
   return (
     <Layout>
-      <div className="space-y-12">
+      <div className="space-y-10">
         {sections.map((section) => (
           <section key={section.id} id={section.id} className="scroll-mt-24">
             <div className="mb-4 flex items-end justify-between">
