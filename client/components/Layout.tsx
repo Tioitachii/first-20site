@@ -34,19 +34,19 @@ export default function Layout({ children }: PropsWithChildren) {
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             <a
               href="#patrocinados"
-              className="hover:text-accent-foreground/80 text-foreground/90"
+              className="text-white/70 transition hover:text-white"
             >
               Patrocinados
             </a>
             <a
               href="#sugestoes"
-              className="hover:text-accent-foreground/80 text-foreground/90"
+              className="text-white/70 transition hover:text-white"
             >
               Sugestões
             </a>
             <a
               href="#finalizados"
-              className="hover:text-accent-foreground/80 text-foreground/90"
+              className="text-white/70 transition hover:text-white"
             >
               Finalizados
             </a>
