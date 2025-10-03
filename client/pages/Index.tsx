@@ -69,7 +69,7 @@ export default function Index() {
                 return (
                   <CarouselItem
                     key={anime.id}
-                    className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                    className="pl-3 sm:basis-[48%] lg:basis-[30%] xl:basis-[22%]"
                   >
                     <AnimeCard
                       anime={anime}
