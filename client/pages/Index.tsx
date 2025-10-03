@@ -33,6 +33,8 @@ export default function Index() {
     [],
   );
 
+  const sectionsBackground = "bg-[radial-gradient(120%_100%_at_50%_-10%,rgba(255,255,255,0.08),rgba(10,10,12,0.85)_65%,rgba(5,5,8,0.95))]";
+
   return (
     <Layout>
       <div className="space-y-10">
