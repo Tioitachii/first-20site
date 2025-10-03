@@ -21,9 +21,9 @@ export function Container({
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <div className="min-h-screen bg-[#020207] text-white">
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-card/80 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-black/50 backdrop-blur-xl">
         <Container className="flex h-16 items-center justify-between gap-4">
-          <a href="/" className="flex items-center gap-2 font-semibold">
+          <a href="/" className="flex items-center gap-2 font-semibold text-white">
             <img
               src="https://r2.flowith.net/files/o/1758206861341-itachi_mangekyou_sharingan_icon_index_1@1024x1024.png"
               alt="Mangekyou Sharingan"
