@@ -52,33 +52,33 @@ export default function Index() {
             <Carousel className="group relative overflow-hidden rounded-2xl border border-white/8 bg-[radial-gradient(140%_60%_at_50%_0%,rgba(255,255,255,0.08),transparent_70%)] px-1.5 py-4 backdrop-blur">
               <CarouselContent className="-ml-2 md:-ml-3">
                 {section.items.map((anime, idx) => {
-                const katanaVariants = [
-                  "katana",
-                  "katanaX",
-                  "katanaVertical",
-                  "katanaStorm",
-                  "katanaArc",
-                ] as const;
-                const v =
-                  section.id === "patrocinados"
-                    ? katanaVariants[idx % katanaVariants.length]
-                    : section.id === "sugestoes"
-                      ? katanaVariants[(idx + 1) % katanaVariants.length]
-                      : "genjutsu";
-                const showLabel = section.id !== "finalizados";
-                return (
-                  <CarouselItem
-                    key={anime.id}
-                    className="pl-2 sm:basis-[44%] lg:basis-[28%] xl:basis-[20%]"
-                  >
-                    <AnimeCard
-                      anime={anime}
-                      variant={v}
-                      showVariantLabel={showLabel}
-                    />
-                  </CarouselItem>
-                );
-              })}
+                  const katanaVariants = [
+                    "katana",
+                    "katanaX",
+                    "katanaVertical",
+                    "katanaStorm",
+                    "katanaArc",
+                  ] as const;
+                  const v =
+                    section.id === "patrocinados"
+                      ? katanaVariants[idx % katanaVariants.length]
+                      : section.id === "sugestoes"
+                        ? katanaVariants[(idx + 1) % katanaVariants.length]
+                        : "genjutsu";
+                  const showLabel = section.id !== "finalizados";
+                  return (
+                    <CarouselItem
+                      key={anime.id}
+                      className="pl-2 sm:basis-[44%] lg:basis-[28%] xl:basis-[20%]"
+                    >
+                      <AnimeCard
+                        anime={anime}
+                        variant={v}
+                        showVariantLabel={showLabel}
+                      />
+                    </CarouselItem>
+                  );
+                })}
               </CarouselContent>
               <CarouselPrevious className="-left-6 hidden h-9 w-9 border border-white/10 bg-gradient-to-br from-white/15 to-white/5 text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:from-white/25 hover:to-white/10 group-hover:flex md:flex" />
               <CarouselNext className="-right-6 hidden h-9 w-9 border border-white/10 bg-gradient-to-br from-white/15 to-white/5 text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:from-white/25 hover:to-white/10 group-hover:flex md:flex" />
