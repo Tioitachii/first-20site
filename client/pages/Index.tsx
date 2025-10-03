@@ -49,8 +49,8 @@ export default function Index() {
                 Ver todos →
               </Link>
             </div>
-            <Carousel className="group relative">
-              <CarouselContent className="-ml-4">
+            <Carousel className="group relative overflow-hidden rounded-2xl border border-white/8 bg-[radial-gradient(140%_60%_at_50%_0%,rgba(255,255,255,0.12),transparent_70%)] px-2 py-5 backdrop-blur">
+              <CarouselContent className="-ml-3 md:-ml-4">
                 {section.items.map((anime, idx) => {
                 const katanaVariants = [
                   "katana",
