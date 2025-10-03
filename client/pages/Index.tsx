@@ -44,18 +44,27 @@ export default function Index() {
             id={section.id}
             className="scroll-mt-24 rounded-3xl border border-white/7 bg-[#05050b]/60 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.45)] backdrop-blur"
           >
-            <div className="mb-4 flex items-end justify-between">
-              <h2 className="border-l-4 border-accent pl-3 text-2xl font-bold tracking-tight">
-                {section.title}
-              </h2>
+            <div className="mb-6 flex items-end justify-between">
+              <div>
+                <span className="text-xs uppercase tracking-[0.4em] text-white/40">
+                  {section.id === "patrocinados" ? "Rota VIP" : section.id === "sugestoes" ? "Curadoria" : "Encerrados"}
+                </span>
+                <h2 className="mt-2 inline-flex items-center gap-3 text-3xl font-semibold text-white">
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-sm text-white/70">
+                    {String(section.items.length).padStart(2, "0")}
+                  </span>
+                  {section.title}
+                </h2>
+              </div>
               <Link
                 to={`/colecao/${section.id}`}
-                className="text-sm text-accent hover:underline"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70 transition hover:border-accent hover:text-accent"
               >
-                Ver todos →
+                Ver todos
+                <span aria-hidden>→</span>
               </Link>
             </div>
-            <Carousel className="group relative overflow-hidden rounded-2xl border border-white/8 bg-[radial-gradient(140%_60%_at_50%_0%,rgba(255,255,255,0.08),transparent_70%)] px-1.5 py-4 backdrop-blur">
+            <Carousel className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[radial-gradient(140%_80%_at_50%_-30%,rgba(255,255,255,0.12),rgba(8,8,12,0.85))] px-1.5 py-4 backdrop-blur">
               <CarouselContent className="-ml-2 md:-ml-3">
                 {section.items.map((anime, idx) => {
                   const katanaVariants = [
