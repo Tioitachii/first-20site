@@ -80,8 +80,8 @@ export default function Index() {
                 );
               })}
               </CarouselContent>
-              <CarouselPrevious className="-left-10 hidden border-none bg-black/60 text-white shadow-md group-hover:flex md:flex" />
-              <CarouselNext className="-right-10 hidden border-none bg-black/60 text-white shadow-md group-hover:flex md:flex" />
+              <CarouselPrevious className="-left-8 hidden h-9 w-9 border border-white/10 bg-gradient-to-br from-white/15 to-white/5 text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:from-white/25 hover:to-white/10 group-hover:flex md:flex" />
+              <CarouselNext className="-right-8 hidden h-9 w-9 border border-white/10 bg-gradient-to-br from-white/15 to-white/5 text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:from-white/25 hover:to-white/10 group-hover:flex md:flex" />
             </Carousel>
           </section>
         ))}
